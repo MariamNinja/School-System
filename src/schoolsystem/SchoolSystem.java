@@ -269,8 +269,9 @@ public class SchoolSystem {
             case 1 : 
                 System.out.println("Enter userName: ");
                 String userName = in.next();
-                System.out.println("Enter Passworc: ");
+                System.out.println("Enter Password: ");
                 String password = in.next();
+                User.login(userName, password);
                 break;
             case 2:
                 System.out.println("*****************************************");
