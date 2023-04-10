@@ -23,241 +23,7 @@ public class SchoolSystem {
 
     private static Scanner in = new Scanner(System.in);
     
-    private static void CreateStudent(){
-        System.out.println("Enter userName: ");
-        String userName = in.next();
-        System.out.println("Enter Password: ");
-        String password = in.next();
-        System.out.println("Enter first Name: ");
-        String firstName = in.next();
-        System.out.println("Enter last Name: ");
-        String lastName = in.next();
-        System.out.println("Enter email: ");
-        String email = in.next();
-        System.out.println("Enter age: ");
-        int age = in.nextInt();
-        
-        boolean found =false;
-        
-        //students
-        File sFile = new File("Student.txt");
-        ArrayList<Student> Students = new ArrayList<>() ; 
-        //Teachers
-        File tFile = new File("Teachers.txt");
-        ArrayList<Teacher> Teachers = new ArrayList<>() ; 
-        //Parents
-        File pFile = new File("Parents.txt");
-        ArrayList<Parent> Parents = new ArrayList<>() ; 
-        
-        try{
-            if(sFile.exists()){
-                ObjectInputStream ifstream = new ObjectInputStream(new FileInputStream(sFile));
-                Students = (ArrayList<Student>)ifstream.readObject();
-                ifstream.close();
-
-                for (Student s : Students) {
-                    if(s.getUserName().equals(userName)){
-                        System.out.println("userName is taken s");
-                        found = true;
-                    }
-                }   
-            }
-            if(tFile.exists() && !found){
-                ObjectInputStream ifstream = new ObjectInputStream(new FileInputStream(tFile));
-                Teachers = (ArrayList<Teacher>)ifstream.readObject();
-                ifstream.close();
-
-                for (Teacher t : Teachers) {
-                    if(t.getUserName().equals(userName)){
-                        System.out.println("userName is taken t");
-                        found = true;
-                    }
-                }   
-            }
-            if(pFile.exists() && !found){
-                ObjectInputStream ifstream = new ObjectInputStream(new FileInputStream(pFile));
-                Parents = (ArrayList<Parent>)ifstream.readObject();
-                ifstream.close();
-
-                for (Parent p : Parents) {
-                    if(p.getUserName().equals(userName)){
-                        System.out.println("userName is taken p");
-                        found = true;
-                    }
-                }   
-            }
-            
-            if(!found){
-                ObjectOutputStream ofstream = new ObjectOutputStream(new FileOutputStream(sFile));
-                Student newStudent = new Student( age,  null,  userName,  password,  firstName,  lastName,  email);
-                Students.add(newStudent);
-                ofstream.writeObject(Students);
-                ofstream.close(); 
-            } 
-            
-        }catch(IOException ex){
-            System.out.println(ex);
-        }catch(ClassNotFoundException ex){
-            System.out.println(ex);
-        } 
-    }
-                
-    private static void CreateParent(){
-        System.out.println("Enter parent userName: ");
-        String userName = in.next();
-        System.out.println("Enter parent Password: ");
-        String password = in.next();
-        System.out.println("Enter parent first Name: ");
-        String firstName = in.next();
-        System.out.println("Enter parent last Name: ");
-        String lastName = in.next();
-        System.out.println("Enter parent email: ");
-        String email = in.next();  
-        
-        boolean found =false;
-        
-        //students
-        File sFile = new File("Student.txt");
-        ArrayList<Student> Students = new ArrayList<>() ; 
-        //Teachers
-        File tFile = new File("Teachers.txt");
-        ArrayList<Teacher> Teachers = new ArrayList<>() ; 
-        //Parents
-        File pFile = new File("Parents.txt");
-        ArrayList<Parent> Parents = new ArrayList<>() ; 
-        
-        try{
-            if(sFile.exists()){
-                ObjectInputStream ifstream = new ObjectInputStream(new FileInputStream(sFile));
-                Students = (ArrayList<Student>)ifstream.readObject();
-                ifstream.close();
-
-                for (Student s : Students) {
-                    if(s.getUserName().equals(userName)){
-                        System.out.println("userName is taken s");
-                        found = true;
-                    }
-                }   
-            }
-            if(tFile.exists() && !found){
-                ObjectInputStream ifstream = new ObjectInputStream(new FileInputStream(tFile));
-                Teachers = (ArrayList<Teacher>)ifstream.readObject();
-                ifstream.close();
-
-                for (Teacher t : Teachers) {
-                    if(t.getUserName().equals(userName)){
-                        System.out.println("userName is taken t");
-                        found = true;
-                    }
-                }   
-            }
-            if(pFile.exists() && !found){
-                ObjectInputStream ifstream = new ObjectInputStream(new FileInputStream(pFile));
-                Parents = (ArrayList<Parent>)ifstream.readObject();
-                ifstream.close();
-
-                for (Parent p : Parents) {
-                    if(p.getUserName().equals(userName)){
-                        System.out.println("userName is taken p");
-                        found = true;
-                    }
-                }   
-            }
-            
-            if(!found){
-                ObjectOutputStream ofstream = new ObjectOutputStream(new FileOutputStream(pFile));
-                Parent newparent =new Parent( userName, password, firstName, lastName, email);
-                Parents.add(newparent);
-                ofstream.writeObject(Parents);
-                ofstream.close(); 
-            } 
-            
-        }catch(IOException ex){
-            System.out.println(ex);
-        }catch(ClassNotFoundException ex){
-            System.out.println(ex);
-        }        
-    }
-    
-    private static void CreateTeacher(){
-        System.out.println("Enter teacher userName: ");
-        String userName = in.next();
-        System.out.println("Enter teacher Password: ");
-        String password = in.next();
-        System.out.println("Enter teacher first Name: ");
-        String firstName = in.next();
-        System.out.println("Enter teacher last Name: ");
-        String lastName = in.next();
-        System.out.println("Enter teacher email: ");
-        String email = in.next();
-        
-        boolean found =false;
-        
-        //students
-        File sFile = new File("Student.txt");
-        ArrayList<Student> Students = new ArrayList<>() ; 
-        //Teachers
-        File tFile = new File("Teachers.txt");
-        ArrayList<Teacher> Teachers = new ArrayList<>() ; 
-        //Parents
-        File pFile = new File("Parents.txt");
-        ArrayList<Parent> Parents = new ArrayList<>() ; 
-        
-        try{
-            if(sFile.exists()){
-                ObjectInputStream ifstream = new ObjectInputStream(new FileInputStream(sFile));
-                Students = (ArrayList<Student>)ifstream.readObject();
-                ifstream.close();
-
-                for (Student s : Students) {
-                    if(s.getUserName().equals(userName)){
-                        System.out.println("userName is taken s");
-                        found = true;
-                    }
-                }   
-            }
-            if(tFile.exists() && !found){
-                ObjectInputStream ifstream = new ObjectInputStream(new FileInputStream(tFile));
-                Teachers = (ArrayList<Teacher>)ifstream.readObject();
-                ifstream.close();
-
-                for (Teacher t : Teachers) {
-                    if(t.getUserName().equals(userName)){
-                        System.out.println("userName is taken t");
-                        found = true;
-                    }
-                }   
-            }
-            if(pFile.exists() && !found){
-                ObjectInputStream ifstream = new ObjectInputStream(new FileInputStream(pFile));
-                Parents = (ArrayList<Parent>)ifstream.readObject();
-                ifstream.close();
-
-                for (Parent p : Parents) {
-                    if(p.getUserName().equals(userName)){
-                        System.out.println("userName is taken p");
-                        found = true;
-                    }
-                }   
-            }
-            
-            if(!found){
-                ObjectOutputStream ofstream = new ObjectOutputStream(new FileOutputStream(tFile));
-                Teacher newteacher = new Teacher(userName,  password,  firstName,  lastName,  email);
-                Teachers.add(newteacher);
-                ofstream.writeObject(Teachers);
-                ofstream.close(); 
-            } 
-            
-        }catch(IOException ex){
-            System.out.println(ex);
-        }catch(ClassNotFoundException ex){
-            System.out.println(ex);
-        }  
-       
-    }
-
-    public static void main(String[] args) {
+    public static void main(String[] args) {      
         System.out.println("*****************************************");
         System.out.println("*                                       *");
         System.out.println("*           1. Login                    *");
@@ -284,13 +50,13 @@ public class SchoolSystem {
                 choice = in.nextInt();
                 switch(choice){
                     case 1:
-                        CreateStudent();
+                        User.CreateStudent();
                         break;
                     case 2:
-                        CreateParent();
+                        User.CreateParent();
                         break;
                     case 3:
-                        CreateTeacher();
+                        User.CreateTeacher();
                         break;
                 }
         }
@@ -340,8 +106,6 @@ public class SchoolSystem {
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
         }
-        
-        
     }
     
 }
